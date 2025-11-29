@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    color: white;
+    height: 100vh;
+    width: 100vw;
+}
+
+#againBtnAndText{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+#againBtnAndText .btnDiv button {
+    padding: 10px 35px;
+    font-size: 18px;
+}
+
+#heading h1 {
+    text-align: center;
+    margin-top: 50px;
+
+}
+
+#lineAndBoxDiv  {
+    margin-top: 80px;
+    position: relative;
+}
+
+#lineAndBoxDiv #line {
+    height: 1px;
+    border: 2px solid white;
+}
+
+#lineAndBoxDiv #box {
+    width: 110px;
+    height: 100px;
+    background-color: rgb(206, 206, 206);
+    font-size: 100px;
+    color: black;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#inputAndText {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+    margin-top: 20px;
+}
+
+
+#inputAndBtn {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+#inputAndBtn #input {
+    width: 100px;
+    height: 50px;
+    padding-left: 25px;
+    font-size: 20px;
+}
+
+#inputAndBtn #checkBtn{
+    padding: 10px;
+    font-size: 18px;
+}
+
+#scoringText {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 20px;
+}
+
+#gameFooter {
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    color: #ccc;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+@media (max-width:400px) {
+    #inputAndText {
+    justify-content: center;
+    flex-direction: column;
+    gap: 50px;
+    margin-top: 60px;
+    text-align: center;
+}
+}
