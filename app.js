@@ -27,31 +27,25 @@ function startAgainSound() {
 let scoringChildren = scoringText.children
 
 let score = 20
-let highScore = 0;
 
-let high = Number(localStorage.getItem('high')) || highScore;
+let highScore = Number(localStorage.getItem('highScore')) || 0;
 
 scoringChildren[1].textContent = `Score : ${score}`
-scoringChildren[2].textContent = `High Score : ${high}`
-
-
-
+scoringChildren[2].textContent = `High Score : ${highScore}`
 
 
 let generateRandomNumber = Math.ceil(Math.random() * 20)
 
-function scoreHandling(score, highScore, message, didWin) {
+function scoreHandling(score, message, didWin) {
     scoringChildren[0].textContent = message
     scoringChildren[1].textContent = `Score : ${score}`
 
     if (didWin && score > highScore) {
-        localStorage.setItem('high', score)
         highScore = score;
+        localStorage.setItem('highScore', highScore)
     }
 
     scoringChildren[2].textContent = `High Score : ${highScore}`;
-
-    return highScore;
 }
 
 checkBtn.addEventListener('click', () => {
@@ -65,7 +59,7 @@ checkBtn.addEventListener('click', () => {
         score++
         localStorage.setItem('high', score)
         message = 'You Won'
-        highScore = scoreHandling(score, high, message, true);
+        scoreHandling(score, message, true);
         document.getElementById("box").textContent = generateRandomNumber;
         input.value = ''
     }
@@ -86,7 +80,7 @@ checkBtn.addEventListener('click', () => {
                 message = 'You Are high'
             }
         }
-        highScore = scoreHandling(score, high, message, false);
+        scoreHandling(score, message, false);
         if (score < 1) return alert('Game Over Please Start Again Game')
     }
 })
