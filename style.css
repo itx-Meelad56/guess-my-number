@@ -12,25 +12,121 @@ body {
     overflow: hidden;
 }
 
-#againBtnAndText{
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(3px);
+    animation: fadeIn 0.3s ease;
+    z-index: 999;
+}
+
+.modal-content {
+    background: #ffffff;
+    padding: 25px 35px;
+    border-radius: 12px;
+    text-align: center;
+    width: 320px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    animation: drop 0.3s ease;
+}
+
+.modal-content h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    outline: none;
+    margin-bottom: 10px;
+    transition: 0.2s;
+}
+
+.modal-content input:focus {
+    border-color: #4f7cff;
+}
+
+#text {
+    color: red;
+    font-size: 14px;
+    height: 18px;
+    margin-bottom: 10px;
+}
+
+#saveNameBtn {
+    padding: 10px 20px;
+    background: #4f7cff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+#saveNameBtn:hover {
+    background: #375dd3;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes drop {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+#againBtnAndText {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
 }
 
-#againBtnAndText .btnDiv button {
+#againBtnAndText .btnDiv button,
+#resetBtn {
     padding: 10px 35px;
     font-size: 18px;
 }
 
+#resetBtnDiv {
+    margin: 5px 0 0 20px;
+}
+
 #heading h1 {
     text-align: center;
-    margin-top: 50px;
+    margin-top: 20px;
 
 }
 
-#lineAndBoxDiv  {
+#lineAndBoxDiv {
     margin-top: 80px;
     position: relative;
 }
@@ -50,9 +146,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    top: 50%;
+    transform: translate(-50%, -59%);
 }
 
 #inputAndText {
@@ -80,7 +176,7 @@ body {
     background-color: white;
 }
 
-#inputAndBtn #checkBtn{
+#inputAndBtn #checkBtn {
     padding: 10px;
     font-size: 18px;
 }
@@ -102,12 +198,12 @@ body {
     width: 100%;
 }
 
-@media (max-width:400px) {
+@media (max-width:500px) {
     #inputAndText {
-    justify-content: center;
-    flex-direction: column;
-    gap: 50px;
-    margin-top: 60px;
-    text-align: center;
-}
+        justify-content: center;
+        flex-direction: column;
+        gap: 50px;
+        margin-top: 60px;
+        text-align: center;
+    }
 }

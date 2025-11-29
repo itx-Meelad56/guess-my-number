@@ -10,6 +10,17 @@
 </head>
 
 <body>
+    
+  
+<div id="nameModal" class="modal">
+  <div class="modal-content">
+    <h2>Enter Your Name</h2>
+    <input type="text" id="playerNameInput" placeholder="Your name">
+    <p id="text"></p>
+    <button id="saveNameBtn">Save Name</button>
+  </div>
+</div>
+
     <div id="againBtnAndText">
         <div class="btnDiv">
             <button id="againBtn">Again!</button>
@@ -18,10 +29,14 @@
             <p>Between 1 and 20</p>
         </div>
     </div>
+    <div id="resetBtnDiv">
+        <button id="resetBtn">Start New Game</button>
+    </div>
     <div id="heading">
         <h1>Guess My Number !</h1>
     </div>
     <div id="lineAndBoxDiv">
+
         <p id="line"></p>
         <p id="box">?</p>
     </div>
@@ -38,8 +53,8 @@
         </div>
     </div>
     <footer id="gameFooter">
-    <p>🎮 Made by Meelad Raza</p>
-</footer>
+        <p>🎮 Made by Meelad Raza</p>
+    </footer>
     <script src="app.js"></script>
 </body>
 
