@@ -26,6 +26,12 @@ if (savedName) {
     nameModal.style.display = 'flex';
 }
 
+playerNameInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+        saveNameBtn.click()
+    }
+});
+
 saveNameBtn.addEventListener('click', () => {
     let name = playerNameInput.value.trim();
     if (!name) return text.textContent = "Enter Your Name";
@@ -57,7 +63,26 @@ function startAgainSound() {
 scoringChildren[1].textContent = `${savedName} | Score : ${score}`
 scoringChildren[2].textContent = `${savedName} | High Score : ${highScore}`
 
+input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+        checkBtn.click();
+    }
+});
+
+
 let generateRandomNumber = Math.ceil(Math.random() * 20)
+
+function showMessage(message, color, fontSize) {
+    document.getElementById("box").textContent = message;
+     document.getElementById("box").style.color = color;
+     document.getElementById("box").style.fontSize = fontSize;
+    setTimeout(() => {
+         document.getElementById("box").textContent = '?';
+         document.getElementById("box").style.color = 'black';
+         document.getElementById("box").style.fontSize = '100px';
+    }, 2000);
+}
+
 
 function scoreHandling(score, message, didWin, name) {
     scoringChildren[0].textContent = message
@@ -71,37 +96,41 @@ function scoreHandling(score, message, didWin, name) {
     scoringChildren[2].textContent = `${name} | High Score : ${highScore}`;
 }
 
+
 checkBtn.addEventListener('click', () => {
     let guess = Number(input.value);
-    if (!guess) return alert('Enter Number')
-    if (guess > 20) return alert('Enter Number 1 to 20')
+    if (!guess) return showMessage('Enter Number', 'red', '18px')
+    if (guess > 20) return showMessage('Enter Number 1 to 20', 'red', '18px')
     playClickSound()
-    document.getElementById("box").textContent = '?';
     let message;
     if (guess == generateRandomNumber) {
         playWonSound()
         score++
         message = 'You Won'
         scoreHandling(score, message, true, savedName);
-        document.getElementById("box").textContent = generateRandomNumber;
+        showMessage('You Won', 'green', '50px')
         input.value = ''
     }
     else {
-        if (score < 1) return alert('Game Over Please Start Again Game')
+        if (score < 1) return showMessage('Game Over! Please Start Again', '#FF3B30', '18px')
         let diff = guess - generateRandomNumber
         score--
         if (diff < 0) {
             if (diff == -1 || diff == -2) {
                 message = 'You Are Low but very close'
+                showMessage('Close guesses', '#FFA500', '30px')
             } else {
                 message = 'You Are Low'
+                showMessage('guesses Low', '#ff5e00ff', '30px')
             }
         }
         if (diff > 0) {
             if (diff == 1 || diff == 2) {
                 message = 'You Are High but very close'
+                showMessage('Close guesses', '#FFA500', '30px')
             } else {
                 message = 'You Are high'
+                showMessage('guesses High', '#ff5e00ff', '30px')
             }
         }
         scoreHandling(score, message, false, savedName);
@@ -112,9 +141,9 @@ againBtn.addEventListener('click', () => {
     startAgainSound()
     generateRandomNumber = Math.ceil(Math.random() * 20)
     score = 20
+    input.value = ''
     scoringChildren[1].textContent = `${savedName} | Score : ${score}`
     scoringChildren[0].textContent = 'Start guessing...'
-    document.getElementById("box").textContent = "?";
 })
 
 resetBtn.addEventListener('click', () => {
@@ -127,10 +156,8 @@ resetBtn.addEventListener('click', () => {
     savedName = null;
     playerNameInput.value = "";
     nameModal.style.display = 'flex';
-
     score = 20;
     scoringChildren[0].textContent = 'Start guessing...';
     scoringChildren[1].textContent = `Name | Score : ${score}`;
     scoringChildren[2].textContent = `Name | High Score : 0`;
-    document.getElementById("box").textContent = "?";
 })
